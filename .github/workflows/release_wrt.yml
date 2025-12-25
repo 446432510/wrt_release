@@ -51,6 +51,19 @@ jobs:
           sudo -E apt -yqq clean
           sudo -E systemctl daemon-reload
 
+
+      - name: 复制 Qosmate 包到源码
+        run: |
+          cp -r package/qosmate ImmortalWrt/package/  # 把本地的 qosmate 包复制到源码目录
+
+      - name: 更新 Feeds 并安装 Qosmate
+        run: |
+          cd ImmortalWrt
+          ./scripts/feeds update -a
+          ./scripts/feeds install -p packages qosmate -a  # 安装 Qosmate 及其依赖
+          
+
+
       - name: Checkout
         uses: actions/checkout@v4
 
