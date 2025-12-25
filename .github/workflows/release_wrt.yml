@@ -54,7 +54,6 @@ jobs:
 
       - name: 创建 Qosmate 目录并写入 Makefile
   run: |
-    # 递归创建目录，避免父目录不存在
     mkdir -p ImmortalWrt/package/qosmate
 
       - name: Download and Extract Qosmate
