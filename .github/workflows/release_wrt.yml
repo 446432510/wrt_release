@@ -52,10 +52,7 @@ jobs:
           sudo -E systemctl daemon-reload
 
 
-      - name: 创建 Qosmate 目录并写入 Makefile
-  run: |
-    mkdir -p ImmortalWrt/package/qosmate
-
+    
       - name: Download and Extract Qosmate
         run: |
           mkdir -p ImmortalWrt/package/qosmate
