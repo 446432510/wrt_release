@@ -52,6 +52,12 @@ jobs:
           sudo -E systemctl daemon-reload
 
 
+- name: 创建 Qosmate 目录并写入 Makefile
+  run: |
+    # 递归创建目录，避免父目录不存在
+    mkdir -p ImmortalWrt/package/qosmate
+
+
       - name: 复制 Qosmate 包到源码
         run: |
           cp -r package/qosmate ImmortalWrt/package/  # 把本地的 qosmate 包复制到源码目录
