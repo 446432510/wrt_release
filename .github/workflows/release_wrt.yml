@@ -119,12 +119,7 @@ jobs:
           KERNEL_VERSION_NAME: 6.6.y
           WHOAMI: ZqinKing
 
-      - name: 下载并解压 QoSmate 源码
-        run: |
-          mkdir -p openwrt/package/qosmate
-          # 直接从 GitHub 拉取 tar.gz，跳过本地上传
-          wget https://github.com/hudra0/qosmate/archive/refs/tags/v1.8.0.tar.gz -O qosmate.tar.gz
-          tar -zxvf qosmate.tar.gz -C openwrt/package/qosmate --strip-components=1
+      
 
       - name: Prepare Release Body
         run: |
