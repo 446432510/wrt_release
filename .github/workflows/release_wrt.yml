@@ -60,12 +60,6 @@ jobs:
           tar -xzf qosmate-1.8.0.tar.gz -C ImmortalWrt/package/qosmate --strip-components=1
 
 
-      - name: 更新 Feeds 并安装 Qosmate
-        run: |
-          cd ImmortalWrt
-          ./scripts/feeds update -a
-          ./scripts/feeds install -p packages qosmate -a  # 安装 Qosmate 及其依赖
-          
 
 
       - name: Checkout
