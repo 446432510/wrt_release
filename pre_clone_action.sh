@@ -57,7 +57,8 @@ fi
 
 
 # 集成 qosmate 插件（流量控制）
-cd $GITHUB_WORKSPACE/
+git clone "$2" -b "$3" immortalwrt
+cd "$GITHUB_WORKSPACE/immortalwrt/package"
 # 拉取 qosmate 源码（双镜像防失败）
 git clone --depth 1 https://github.com/hudra0/qosmate.git luci-app-qosmate || git clone --depth 1 
 # 清理冲突的 QoS 插件（避免编译冲突）
