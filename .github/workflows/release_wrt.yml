@@ -52,16 +52,6 @@ jobs:
           sudo -E systemctl daemon-reload
 
 
-    
-      - name: Download and Extract Qosmate
-        run: |
-          mkdir -p ImmortalWrt/package/qosmate
-          wget https://github.com/hudra0/qosmate/archive/refs/tags/v1.8.0.tar.gz -O qosmate-1.8.0.tar.gz
-          tar -xzf qosmate-1.8.0.tar.gz -C ImmortalWrt/package/qosmate --strip-components=1
-
-
-
-
       - name: Checkout
         uses: actions/checkout@v4
 
