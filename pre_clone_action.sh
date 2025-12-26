@@ -52,6 +52,9 @@ git clone --depth 1 -b $REPO_BRANCH $REPO_URL $BUILD_DIR
 cd "$GITHUB_WORKSPACE/action_build/package"
 git clone --depth 1 https://github.com/hudra0/qosmate.git qosmate
 git clone --depth 1 https://github.com/hudra0/luci-app-qosmate.git luci-app-qosmate
+ #加入adguardhome
+git clone --depth 1 https://github.com/AdguardTeam/AdGuardHome.git AdGuardHome
+
 
 # GitHub Action 移除国内下载源
 PROJECT_MIRRORS_FILE="$BUILD_DIR/scripts/projectsmirrors.json"
