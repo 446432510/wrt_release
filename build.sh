@@ -39,6 +39,9 @@ read_ini_by_key() {
     local key=$1
     awk -F"=" -v key="$key" '$1 == key {print $2}' "$INI_FILE"
 }
+# 移除 sqm
+sed -i '/CONFIG_PACKAGE_luci-app-sqm/d' .config
+sed -i '/CONFIG_PACKAGE_sqm-scripts/d' .config
 
 # 移除 uhttpd 依赖
 # 当启用luci-app-quickfile插件时，表示启动nginx，所以移除luci对uhttp(luci-light)的依赖
