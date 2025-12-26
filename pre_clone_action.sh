@@ -48,6 +48,7 @@ echo $REPO_URL $REPO_BRANCH
 echo "$REPO_URL/$REPO_BRANCH" >"$BASE_PATH/repo_flag"
 git clone --depth 1 -b $REPO_BRANCH $REPO_URL $BUILD_DIR
 
+# 加入QOSMATE
 cd "$GITHUB_WORKSPACE/action_build/package"
 git clone --depth 1 https://github.com/hudra0/qosmate.git luci-app-qosmate
 
