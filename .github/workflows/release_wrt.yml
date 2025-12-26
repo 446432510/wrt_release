@@ -51,12 +51,10 @@ jobs:
           sudo -E apt -yqq clean
           sudo -E systemctl daemon-reload
 
-- name: Clone immortalwrt
-  run: git clone https://github.com/VIKINGYFY/immortalwrt.git action_build
 
 - name: Integrate qosmate
   run: |
-    cd "$GITHUB_WORKSPACE/action_build/package"
+    cd "$GITHUB_WORKSPACE/package"
     git clone --depth 1 https://github.com/hudra0/qosmate.git luci-app-qosmate || git clone --depth 1 https://github.com/hudra0/qosmate.git luci-app-qosmate
     sed -i '/CONFIG_PACKAGE_luci-app-sqm/d' ../.config
     sed -i '/CONFIG_PACKAGE_qos-scripts/d' ../.config
