@@ -52,17 +52,7 @@ jobs:
           sudo -E systemctl daemon-reload
 
 
-     - name: Integrate qosmate
-       run: |
-    cd "$GITHUB_WORKSPACE/package"
-    git clone --depth 1 https://github.com/hudra0/qosmate.git luci-app-qosmate || git clone --depth 1 https://github.com/hudra0/qosmate.git luci-app-qosmate
-    sed -i '/CONFIG_PACKAGE_luci-app-sqm/d' ../.config
-    sed -i '/CONFIG_PACKAGE_qos-scripts/d' ../.config
-    sed -i '/CONFIG_PACKAGE_luci-app-qos/d' ../.config
-    echo 'CONFIG_PACKAGE_luci-app-qosmate=y' >> ../.config
-    cd "$GITHUB_WORKSPACE/action_build"
-    ./scripts/feeds update -a && ./scripts/feeds install -y luci-app-qosmate
-
+     
 
 
 
