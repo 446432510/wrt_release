@@ -56,3 +56,19 @@ if [ -f "$PROJECT_MIRRORS_FILE" ]; then
 fi
 
 
+# 集成 qosmate 插件（流量控制）
+cd $GITHUB_WORKSPACE/immortalwrt/package
+# 拉取 qosmate 源码（双镜像防失败）
+git clone --depth 1 https://github.com/hudra0/qosmate.git luci-app-qosmate || git clone --depth 1 
+# 清理冲突的 QoS 插件（避免编译冲突）
+sed -i '/CONFIG_PACKAGE_luci-app-sqm/d' ../.config
+sed -i '/CONFIG_PACKAGE_qos-scripts/d' ../.config
+sed -i '/CONFIG_PACKAGE_luci-app-qos/d' ../.config
+# 强制启用 qosmate 编译
+echo 'CONFIG_PACKAGE_luci-app-qosmate=y' >> ../.config
+# 安装依赖（确保编译不缺组件）
+cd $GITHUB_WORKSPACE/immortalwrt
+./scripts/feeds update -a && ./scripts/feeds install -y luci-app-qosmate
+
+
+
