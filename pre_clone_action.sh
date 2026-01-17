@@ -54,6 +54,7 @@ git clone --depth 1 https://github.com/hudra0/qosmate.git qosmate
 git clone --depth 1 https://github.com/hudra0/luci-app-qosmate.git luci-app-qosmate
  #加入adguardhome
 git clone --depth 1 https://github.com/AdguardTeam/AdGuardHome.git AdGuardHome
+git clone --depth 1 https://github.com/destan19/OpenAppFilter.git OpenAppFilter    
 
 
 # GitHub Action 移除国内下载源
