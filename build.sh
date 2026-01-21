@@ -67,13 +67,7 @@ apply_config() {
    # fi
 
     # 追加代理配置
-    cat "$BASE_PATH/deconfig/proxy.config" >> "$BASE_PATH/$BUILD_DIR/.config"
-}
-
-
-
-
-
+cat "$BASE_PATH/deconfig/proxy.config" >> "$BASE_PATH/$BUILD_DIR/.config"
 
 
 # 新增：清理所有 NSS 相关配置
@@ -82,6 +76,13 @@ sed -i '/CONFIG_NSS/d' "$config_path"
 sed -i '/CONFIG_KERNEL_NSS/d' "$config_path"
 sed -i '/CONFIG_PACKAGE_kmod-nss/d' "$config_path"
 sed -i '/CONFIG_PACKAGE_nss-/d' "$config_path"
+}
+
+
+
+
+
+
 
 
 
