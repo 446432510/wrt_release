@@ -61,9 +61,9 @@ apply_config() {
     \cp -f "$CONFIG_FILE" "$BASE_PATH/$BUILD_DIR/.config"
     
     # 如果是 ipq60xx 或 ipq807x 平台，则追加 NSS 配置
-    if grep -qE "(ipq60xx|ipq807x)" "$BASE_PATH/$BUILD_DIR/.config" &&
+    #if grep -qE "(ipq60xx|ipq807x)" "$BASE_PATH/$BUILD_DIR/.config" &&
         ! grep -q "CONFIG_GIT_MIRROR" "$BASE_PATH/$BUILD_DIR/.config"; then
-        cat "$BASE_PATH/deconfig/nss.config" >> "$BASE_PATH/$BUILD_DIR/.config"
+        #cat "$BASE_PATH/deconfig/nss.config" >> "$BASE_PATH/$BUILD_DIR/.config"
     fi
 
     # 追加代理配置
@@ -71,21 +71,6 @@ apply_config() {
 }
 
 
-
-# ========== 新增：强制启用 firewall3 禁用 firewall4 ==========
-    local config_path="$BASE_PATH/$BUILD_DIR/.config"
-    # 删除 firewall4 相关配置
-    sed -i '/CONFIG_PACKAGE_firewall4/d' "$config_path"
-    # 启用 firewall3
-    echo "CONFIG_PACKAGE_firewall3=y" >> "$config_path"
-    # 强制勾选端口转发核心依赖（iptables 系列模块）
-    echo "CONFIG_PACKAGE_iptables=y" >> "$config_path"
-    echo "CONFIG_PACKAGE_iptable_nat=y" >> "$config_path"
-    echo "CONFIG_PACKAGE_ipt_MASQUERADE=y" >> "$config_path"
-    echo "CONFIG_PACKAGE_ipt_PORTMAP=y" >> "$config_path"
-    # 启用 LuCI 防火墙可视化配置插件
-    echo "CONFIG_PACKAGE_luci-app-firewall=y" >> "$config_path"
-    # ========== 新增结束 ==========
 }
 
 
