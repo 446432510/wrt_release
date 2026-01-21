@@ -70,6 +70,32 @@ apply_config() {
     cat "$BASE_PATH/deconfig/proxy.config" >> "$BASE_PATH/$BUILD_DIR/.config"
 }
 
+
+
+# ========== 新增：强制启用 firewall3 禁用 firewall4 ==========
+    local config_path="$BASE_PATH/$BUILD_DIR/.config"
+    # 删除 firewall4 相关配置
+    sed -i '/CONFIG_PACKAGE_firewall4/d' "$config_path"
+    # 启用 firewall3
+    echo "CONFIG_PACKAGE_firewall3=y" >> "$config_path"
+    # 强制勾选端口转发核心依赖（iptables 系列模块）
+    echo "CONFIG_PACKAGE_iptables=y" >> "$config_path"
+    echo "CONFIG_PACKAGE_iptable_nat=y" >> "$config_path"
+    echo "CONFIG_PACKAGE_ipt_MASQUERADE=y" >> "$config_path"
+    echo "CONFIG_PACKAGE_ipt_PORTMAP=y" >> "$config_path"
+    # 启用 LuCI 防火墙可视化配置插件
+    echo "CONFIG_PACKAGE_luci-app-firewall=y" >> "$config_path"
+    # ========== 新增结束 ==========
+}
+
+
+
+
+
+
+
+
+
 REPO_URL=$(read_ini_by_key "REPO_URL")
 REPO_BRANCH=$(read_ini_by_key "REPO_BRANCH")
 REPO_BRANCH=${REPO_BRANCH:-main}
